@@ -1,0 +1,16 @@
+server:
+  port: 65436
+
+spring:
+  application:
+    name: north-common
+  profiles:
+    active: dev
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://north:north@north-eureka:65432/eureka/

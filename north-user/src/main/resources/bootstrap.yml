@@ -1,0 +1,23 @@
+server:
+  port: 65435
+
+spring:
+  application:
+    name: north-user
+  profiles:
+    active: dev
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://north:north@north-eureka:65432/eureka/
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

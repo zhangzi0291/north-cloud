@@ -1,0 +1,21 @@
+路由配置Json格式
+{
+	"id":"test2",
+	"filters":[
+	    {
+	        "name": "RewritePath",
+	        "args": {
+	            "regexp": "/api/(?<remaining>.*)",
+	            "replacement": "/${remaining}"
+	        }
+	    }
+	],
+	"order":0,
+	"predicates":[{
+		"args":{
+			"pattern":"/api/**"
+		},
+		"name":"Path"
+	}],
+	"uri":"lb://WEB-API"
+}

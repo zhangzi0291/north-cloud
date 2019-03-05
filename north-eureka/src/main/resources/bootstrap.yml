@@ -1,0 +1,35 @@
+server:
+  port: 65432
+
+spring:
+  security:
+    user:
+      name: north
+      password: north
+  application:
+    name: north-eureka
+  cloud:
+    config:
+      enabled: false
+
+# 注册中心配置
+eureka:
+  instance:
+    hostname: north-eureka
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://north:north@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    eviction-interval-timer-in-ms: 5000
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.9
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

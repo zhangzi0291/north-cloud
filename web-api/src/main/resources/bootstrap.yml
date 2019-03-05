@@ -1,0 +1,30 @@
+server:
+  port: 60000
+
+spring:
+  application:
+    name: web-api
+  profiles:
+    active: dev
+  datasource:
+    druid:
+      url: jdbc:postgresql://127.0.0.1:5432/springboot
+      username: root
+      password: root
+
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://north:north@north-eureka:65432/eureka/
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,30 @@
+server:
+  port: 65434
+
+spring:
+  application:
+    name: north-gateway
+  profiles:
+    active: dev
+  cloud:
+    # 网关
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+
+# 注册中心配置
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://north:north@north-eureka:65432/eureka/
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
